@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Editor</title>
+    <meta name="description" content="ブラウザ上で動作するローカルPDF編集ツール" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Header / Toolbar -->
+      <header id="toolbar">
+        <div class="toolbar-left">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+          </div>
+          <h1 class="app-title">PDF Editor</h1>
+          <span id="page-count-badge" class="badge hidden">0 pages</span>
+        </div>
+        <div class="toolbar-right">
+          <label class="btn btn-accent" id="import-btn-label">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span>Import</span>
+            <input type="file" id="import-input" accept=".pdf,application/pdf" hidden />
+          </label>
+          <label class="btn btn-outline" id="insert-btn-label" data-disabled="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>Insert</span>
+            <input type="file" id="insert-input" accept=".pdf,application/pdf" hidden disabled />
+          </label>
+          <button class="btn btn-glow" id="export-btn" disabled>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Export</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main workspace -->
+      <main id="workspace">
+        <!-- Empty state -->
+        <div id="empty-state" class="empty-state">
+          <div class="empty-illustration">
+            <svg viewBox="0 0 24 24" width="72" height="72" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="12" y1="18" x2="12" y2="12"/>
+              <line x1="9" y1="15" x2="15" y2="15"/>
+            </svg>
+          </div>
+          <h2>PDFファイルを読み込む</h2>
+          <p>上部の「Import」ボタンからPDFファイルを選択してください。</p>
+        </div>
+
+        <!-- Pages grid -->
+        <div id="pages-grid" class="pages-grid hidden"></div>
+      </main>
+
+      <!-- Loading overlay -->
+      <div id="loading" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p id="loading-msg">読み込み中…</p>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

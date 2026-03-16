@@ -1,0 +1,6 @@
+node_modules/
+dist/
+public/cmaps/
+public/standard_fonts/
+.DS_Store
+test.pdf
