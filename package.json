@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "postinstall": "node scripts/postinstall.js",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"

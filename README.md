@@ -12,13 +12,8 @@
 ### 手順
 
 ```bash
-# 依存パッケージのインストール（初回のみ）
+# 依存パッケージのインストール（CMap・フォントデータも自動コピーされます）
 npm install
-
-# CMap・フォントデータのコピー（初回のみ）
-mkdir -p public/cmaps public/standard_fonts
-cp node_modules/pdfjs-dist/cmaps/* public/cmaps/
-cp node_modules/pdfjs-dist/standard_fonts/* public/standard_fonts/
 
 # 開発サーバーの起動
 npm run dev
